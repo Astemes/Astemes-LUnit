@@ -297,24 +297,26 @@ If you prefer to watch a video, there is an introduction available on <a href="h
 <h2 id="prerequisites">Prerequisites</h2>
 <p>To follow along with the instructions on this page you will need to have LabVIEW version 2020 or later installed as well as the LUnit unit testing framework.</p>
 <h2 id="creating-a-test-case">Creating a Test Case</h2>
-<p>All tests you write will belong to a test case.
-The test case is implemented as a LabVIEW class, but in order to use it you will not need to know anything about object oriented programming.</p>
-<p>To get started, create an empty project and add a test case to it by clicking the New Test Case button in the toolbar of the LabVIEW project.</p>
+<p>All tests you write will belong to a test case class.
+This is implemented as a LabVIEW class, but in order to use it you will not need to know anything about object oriented programming.</p>
+<p>To get started, create an empty project and add a test case class to it by clicking the New Test Case button in the toolbar of the LabVIEW project.</p>
 <p><img alt="Project integration" src="img/project_Integration.png"/></p>
 <p>You can also do the same from the <code>Tools &gt; LUnit &gt; New Test Case...</code> menu option.</p>
 <p><img alt="Tools Menu &gt; Lunit &gt; new test case" src="img/tools_menu_new_tc.jpg"/></p>
 <p>Save the test case in a convenient location.
 Some like to keep the tests next to the code they are testing, and other keep them in a separate folder called <code>Tests</code> or similar.
-I personally find the later option with a separate top level directory the most convenient.</p>
+I personally find the later option with a separate top level directory the most convenient.
+Keep in mind that tests should not be included in builds and there should be no dependencies pointing from your code to the test code.</p>
 <h2 id="adding-a-test-method">Adding a Test Method</h2>
 <p>Now you have a test case and may add some test methods to the test case.
-A test method is a vi belonging to the test case class and will get executed by the framework.</p>
-<p>It is <strong>not</strong> recommended to make test vi:s <em>dynamic dispatch</em>.
-If tests are configured as <em>dynamic dispatch</em>, the name of the VI must start with the four letters <em>test</em>.</p>
+A test method is a vi belonging to the test case class and will get executed by the framework.
+The name of the vi <strong>must</strong> start with the four letters "test" (case insensitive).
+It is <strong>not</strong> recommended to make test vi:s <em>dynamic dispatch</em>.</p>
 <p>To create a new test method, right-click on the Test Static Test Method.vit and select <code>New from Template</code>.</p>
 <p><img alt="New from template" src="img/new_static_from_template.png"/></p>
-<p>You can create test methods any way you like and you are free to delete the template methods if you choose to.
-It is important however that the connector pane uses the same pattern of terminals as the template.</p>
+<p>You can create test methods any way you like and you are free to delete the template method.
+It is important however that the connector pane uses the same pattern of terminals as the template.
+The error in terminal is optional and never used when running tests by the framework.</p>
 <p>You should now make your test method test something useful by implementing the block diagram of the vi.
 To perform tests you will use the assertions available in the provided palette, or using quick drop.</p>
 <p><img alt="Simple test case" src="img/simple_test_case.png"/></p>
